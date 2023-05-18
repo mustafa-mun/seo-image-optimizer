@@ -9,6 +9,12 @@ program
   .command("download")
   .description("Download images from a webpage")
   .option("-u, --url <url>", "Webpage URL")
+  .option(
+    "-o, --output <file-type>",
+    "Output type ('json', 'html')",
+    /^(json|html)$/i,
+    "json"
+  )
   .action((options) => {
     // Logic to handle the 'download' command
     const { url, output } = options;
