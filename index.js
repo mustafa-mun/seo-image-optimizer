@@ -19,7 +19,10 @@ program
   .action(async (options) => {
     const { url, output } = options;
     const HTML = await getPageHTML(options.url);
-    const downloadImages = await downloadImagesFromHTML(HTML, "images");
+    const downloadImages = await downloadImagesFromHTML(
+      HTML,
+      "downloaded-images"
+    );
     // Call the appropriate function to download images with the provided options
     console.log(options);
   });
