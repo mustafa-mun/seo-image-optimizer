@@ -46,23 +46,6 @@ async function downloadImagesFromHTML(html, outputDirectory) {
   return downloadedImages;
 }
 
-const HTML = `<!DOCTYPE html>
-<html>
-<head>
-  <title>Image Gallery</title>
-</head>
-<body>
-  <h1>Image Gallery</h1>
-  <img src="image1.jpg" alt="Image 1">
-  <img src="image2.jpg" alt="Image 2">
-  <img src="image3.jpg" alt="Image 3">
-  <img src="image4.jpg" alt="Image 4">
-  <img src="image5.jpg" alt="Image 5">
-</body>
-</html>`;
-
-downloadImagesFromHTML(HTML, "test-images/").then((out) => console.log(out));
-
 module.exports = {
   downloadImagesFromHTML,
   getPageHTML,

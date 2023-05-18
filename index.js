@@ -1,4 +1,5 @@
 const { program } = require("commander");
+const { downloadImagesFromHTML, getPageHTML } = require("./modules/crawl");
 
 program
   .version("1.0.0")
@@ -15,9 +16,10 @@ program
     /^(json|html)$/i,
     "json"
   )
-  .action((options) => {
-    // Logic to handle the 'download' command
+  .action(async (options) => {
     const { url, output } = options;
+    const HTML = await getPageHTML(options.url);
+    const downloadImages = await downloadImagesFromHTML(HTML, "images");
     // Call the appropriate function to download images with the provided options
     console.log(options);
   });
