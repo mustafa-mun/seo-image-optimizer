@@ -1,5 +1,5 @@
 # seo-image-optimizer
-This Command Line Interface (CLI) tool allows you to download and optimize images from a webpage for SEO purposes. It helps automate the process of fetching images, optimizing them for size and quality, and storing them in a specified output directory. It also generates XML sitemap entries and HTML image tags for easy integration into your website.
+This Command Line Interface (CLI) tool allows you to download and optimize images from a webpage for SEO purposes. It helps automate the process of fetching images, optimizing them for quality and storing them in a specified output directory. It also generates XML sitemap entries and HTML image tags for easy integration into your website.
 
 ## Installation
 
