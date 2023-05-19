@@ -1,5 +1,6 @@
 const { program } = require("commander");
 const { downloadImagesFromHTML, getPageHTML } = require("./modules/crawl");
+const { optimizeImages } = require("./modules/optimize");
 
 program
   .version("1.0.0")
@@ -11,10 +12,9 @@ program
   .description("Download images from a webpage")
   .option("-u, --url <url>", "Webpage URL")
   .option(
-    "-o, --output <file-type>",
-    "Output type ('json', 'html')",
-    /^(json|html)$/i,
-    "json"
+    "-o, --output <output-directory>",
+    "Output Directory",
+    "optimized-images"
   )
   .action(async (options) => {
     const { url, output } = options;
@@ -24,7 +24,7 @@ program
       "downloaded-images"
     );
     // Call the appropriate function to download images with the provided options
-    console.log(options);
+    await optimizeImages(downloadImages, options.output, options.url);
   });
 
 program.parse(process.argv);
