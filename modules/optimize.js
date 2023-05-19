@@ -6,6 +6,9 @@ async function optimizeImages(imgArray, outputDirectory, websiteURL) {
   if (!fs.existsSync(outputDirectory)) {
     fs.mkdirSync(outputDirectory, { recursive: true });
   }
+
+  let imgTags = ""; // Variable to store all the <img> tags
+
   for (const img of imgArray) {
     const imgBuffer = fs.readFileSync(img);
     const optimizedBuffer = await sharp(imgBuffer)
@@ -36,8 +39,26 @@ async function optimizeImages(imgArray, outputDirectory, websiteURL) {
 
     // Generate an HTML <img> tag with alt attribute for embedding the image in web pages
     const imgTag = `<img src="${websiteURL}/${fileName}.jpg" alt="${altText}" />`;
+    imgTags += imgTag; // Append the imgTag to the imgTags variable
+
     console.log(`HTML image tag: ${imgTag}`);
   }
+
+  // Create the index.html file and write the imgTags into it
+  const indexHTML = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>My Web Page</title>
+      </head>
+      <body>
+        ${imgTags}
+      </body>
+    </html>
+  `;
+
+  fs.writeFileSync("index.html", indexHTML);
+  console.log(`index.html file created and img tags added.`);
 }
 
 module.exports = { optimizeImages };
