@@ -43,10 +43,14 @@ node index.js download -u <url> [-o <output-directory>]
   - Use Sharp to optimize the image by adjusting the JPEG quality to 85 and converting it to the WebP format with the same quality.
   - Extract the filename without the extension to use as the alt text for SEO purposes.
   - Convert spaces in the filename to hyphens and convert it to lowercase.
-  - Construct the output path by joining the output directory and the filename with the *.webp* extension.
+  - Construct the output path by joining the output directory and the filename with the `.webp` extension.
   - Write the optimized image buffer to the output path.
   - Print a message indicating that the image has been optimized and saved.
   - Generate an XML sitemap entry for the image, including the image location, caption, and title.
   - Append the XML sitemap entry to the existing sitemap file.
-  - Generate an HTML *<img>* tag with the image source and alt attribute for embedding the image in web pages.
-  3. The generated XML sitemap entries and HTML image tags can be used to enhance the SEO of your website by providing search engines with information about the images and improving their discoverability.
+  - Generate an HTML `<img>` tag with the image source and alt attribute for embedding the image in web pages.
+  
+### XML output
+  The CLI tool generates a XML sitemap entries `sitemap.xml` which can be used to enhance the SEO of your website by providing search engines with information about the images and improving their discoverability.
+### HTML output
+  The CLI tool also generates an `index.html` file that contains the optimized images in the form of HTML `<img>` tags. This file can be used to showcase the optimized images on your website.
