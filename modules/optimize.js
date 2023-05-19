@@ -2,7 +2,7 @@ const fs = require("fs");
 const sharp = require("sharp");
 const path = require("path");
 
-async function optimizeImages(imgArray, outputDirectory, websiteURL) {
+async function optimizeImages(imgArray, outputDirectory) {
   if (!fs.existsSync(outputDirectory)) {
     fs.mkdirSync(outputDirectory, { recursive: true });
   }
@@ -26,9 +26,9 @@ async function optimizeImages(imgArray, outputDirectory, websiteURL) {
 
     // Generate a separate XML sitemap entry for each image
     const sitemapEntry = `<url>
-      <loc>${websiteURL}/${fileName}.jpg</loc>
+      <loc>${outputPath}</loc>
       <image:image>
-        <image:loc>${websiteURL}/${fileName}.jpg</image:loc>
+        <image:loc>${outputPath}</image:loc>
         <image:caption>Image caption or description</image:caption>
         <image:title>Image title</image:title>
       </image:image>
@@ -38,7 +38,7 @@ async function optimizeImages(imgArray, outputDirectory, websiteURL) {
     fs.appendFileSync("sitemap.xml", sitemapEntry);
 
     // Generate an HTML <img> tag with alt attribute for embedding the image in web pages
-    const imgTag = `<img src="${websiteURL}/${fileName}.jpg" alt="${altText}" />`;
+    const imgTag = `<img src="${outputPath}" alt="${altText}" />`;
     imgTags += imgTag; // Append the imgTag to the imgTags variable
 
     console.log(`HTML image tag: ${imgTag}`);

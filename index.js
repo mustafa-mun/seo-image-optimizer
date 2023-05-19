@@ -24,7 +24,7 @@ program
       "downloaded-images"
     );
     // Call the appropriate function to download images with the provided options
-    await optimizeImages(downloadImages, options.output, options.url);
+    await optimizeImages(downloadImages, options.output);
   });
 
 program.parse(process.argv);
